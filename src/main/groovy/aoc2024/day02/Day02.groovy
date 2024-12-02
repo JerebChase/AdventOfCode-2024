@@ -29,7 +29,7 @@ class Day02 {
             for (i in levels.size()..0) {
                 List<Integer> compareLevels = levels.collect()
                 if (i != levels.size()) compareLevels.removeAt(i)
-                if ((1..<compareLevels.size()).every { 0 < compareLevels[it] - compareLevels[it - 1] && compareLevels[it] - compareLevels[it - 1] < 4 }) {
+                if ((1..<compareLevels.size()).every { 0 < compareLevels[it] - compareLevels[it-1] && compareLevels[it] - compareLevels[it-1] < 4 }) {
                     safeReports++
                     break
                 }
