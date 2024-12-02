@@ -10,10 +10,31 @@ class Day02 {
     }
 
     static partOne(List<String> input) {
-
+        int safeReports = 0
+        input.each {
+            List<Integer> levels = it.split(" ").collect { Integer.parseInt(it) }
+            levels = levels.first() > levels.last() ? levels.reverse() : levels
+            if ((1..<levels.size()).every { 0 < levels[it] - levels[it-1] && levels[it] - levels[it-1] < 4 }) {
+                safeReports++
+            }
+        }
+        return safeReports
     }
 
     static partTwo(List<String> input) {
-
+        int safeReports = 0
+        input.each {
+            List<Integer> levels = it.split(" ").collect { Integer.parseInt(it) }
+            levels = levels.first() > levels.last() ? levels.reverse() : levels
+            for (i in levels.size()..0) {
+                List<Integer> compareLevels = levels.collect()
+                if (i != levels.size()) compareLevels.removeAt(i)
+                if ((1..<compareLevels.size()).every { 0 < compareLevels[it] - compareLevels[it - 1] && compareLevels[it] - compareLevels[it - 1] < 4 }) {
+                    safeReports++
+                    break
+                }
+            }
+        }
+        return safeReports
     }
 }
