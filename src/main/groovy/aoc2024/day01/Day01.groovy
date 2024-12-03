@@ -4,16 +4,16 @@ import aoc2024.common.Utils
 
 class Day01 {
     static void main(String[] args) {
-        List<String> input = Utils.readFile("inputs/day01-input.txt")
+        def input = Utils.readFile("inputs/day01-input.txt")
         println("The answer to part one is ${partOne(input)}")
         println("The answer to part two is ${partTwo(input)}")
     }
 
     static partOne(List<String> input) {
-        List<String> firstList = input.collect { it.split("   ")[0] }.sort()
-        List<String> secondList = input.collect { it.split("   ")[1] }.sort()
+        def firstList = input.collect { it.split("   ")[0] }.sort()
+        def secondList = input.collect { it.split("   ")[1] }.sort()
 
-        List<Integer> differences = [firstList, secondList].transpose().collect {
+        def differences = [firstList, secondList].transpose().collect {
             Math.abs(Integer.parseInt(it[0]) - Integer.parseInt(it[1]))
         }
 
@@ -21,10 +21,10 @@ class Day01 {
     }
 
     static partTwo(List<String> input) {
-        List<String> leftList = input.collect { it.split("   ")[0] }
-        List<String> rightList = input.collect { it.split("   ")[1] }
+        def leftList = input.collect { it.split("   ")[0] }
+        def rightList = input.collect { it.split("   ")[1] }
 
-        List<Integer> similarity = leftList.collect {
+        def similarity = leftList.collect {
             Integer.parseInt(it) * rightList.count(it)
         }
 
